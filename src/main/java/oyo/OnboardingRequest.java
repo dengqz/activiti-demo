@@ -31,17 +31,17 @@ import org.activiti.engine.task.Task;
 public class OnboardingRequest {
 	public static void main(String[] args) throws ParseException{
 		ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-		        .setJdbcUrl("jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000")
-		        .setJdbcUsername("sa")
-		        .setJdbcPassword("")
-		        .setJdbcDriver("org.h2.Driver")
+		        .setJdbcUrl("jdbc:mysql://localhost:3306/oyoo?useUnicode=true&characterEncoding=utf8")
+		        .setJdbcUsername("root")
+		        .setJdbcPassword("123456")
+		        .setJdbcDriver("com.mysql.jdbc.Driver")
 		        .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 		    ProcessEngine processEngine = cfg.buildProcessEngine();
 		    String pName = processEngine.getName();
 		    String ver = ProcessEngine.VERSION;
 		    System.out.println("ProcessEngine [" + pName + "] Version: [" + ver + "]");
 
-		    RepositoryService repositoryService = processEngine.getRepositoryService();
+		    /*RepositoryService repositoryService = processEngine.getRepositoryService();
 		    Deployment deployment = repositoryService.createDeployment()
 		        .addClasspathResource("onboarding.bpmn20.xml").deploy();
 		    ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
@@ -128,6 +128,6 @@ public class OnboardingRequest {
 		      processInstance = runtimeService.createProcessInstanceQuery()
 		          .processInstanceId(processInstance.getId()).singleResult();
 		    }
-		    scanner.close();
+		    scanner.close();*/
 	  }
 }
